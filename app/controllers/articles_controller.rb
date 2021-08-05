@@ -53,7 +53,7 @@ class ArticlesController < ApplicationController
 	end
 
 	def required_same_user
-		if current_user != @article.user
+		if current_user != @article.user && !current_user.admin?
 			flash[:alert] = "This is not your article"
       redirect_to root_path
 		end

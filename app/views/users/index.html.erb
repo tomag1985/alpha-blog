@@ -17,8 +17,9 @@
 						<%= link_to gravatar_for(user, size: 200), user_path(user)  %>
 						<p class="card-text"><%= pluralize(user.articles.count, "article") %> </p>
 						<%= link_to "View profile", user_path(user), class:"btn btn-outline-success"  %>
-						<% if logged_in? && current_user == user %>
+						<% if logged_in? && (current_user == user || current_user.admin?) %>
 							<%= link_to "Edit profile", edit_user_path(user), class:"btn btn-outline-info"  %>
+							<%= link_to "Remove profile", user_path(user), class:"btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"}  %>
 						<% end %>
 					</div>
 					<div class="card-footer text-muted">
