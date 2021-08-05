@@ -1,7 +1,16 @@
 <h1 class="text-center mt-4">Our articles</h1>
 
+
+<div class="apple_pagination">
+	<%= will_paginate @articles, :container => false %>
+</div>
+
 <%= render 'article' %>
 
 <div class="mb-3 d-flex justify-content-center">
 	<%= link_to '[ Create new article ]', new_article_path, class:"text-info" %>
+</div>
+
+<div class="apple_pagination">
+	<%= will_paginate @articles, :container => false %>
 </div>
