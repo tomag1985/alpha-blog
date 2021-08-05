@@ -14,20 +14,34 @@
                 Articles
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><%= link_to "Index", articles_path, class:"dropdown-item" %></li>
-                <li><%= link_to "Create new", new_article_path, class:"dropdown-item" %></li>                
+                <li><%= link_to "Index", articles_path, class:"dropdown-item" %></li>               
+                <% if logged_in? %>
+                  <li><%= link_to "Create new", new_article_path, class:"dropdown-item" %></li>
+                <% end %>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="#">Something else here</a></li>
               </ul>
             </li>
-            <li class="nav-item">
-              <%= link_to "Log in", login_path, class:"nav-link" %>
-            </li>
             
-            <li class="nav-item">
-              <%= link_to "Log out", logout_path, class:"nav-link", method: :delete %>
+            <% if logged_in? %>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <%= current_user.username %>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><%= link_to "My profile", user_path(current_user), class:"dropdown-item" %></li>
+                <li><%= link_to "Edit my profile", edit_user_path(current_user), class:"dropdown-item" %></li>
+                <li><%= link_to "Logout", logout_path, class:"dropdown-item", method: :delete %></li>
+              </ul>
             </li>
-
+            <% else %>
+              <li class="nav-item">
+                <%= link_to "Log in", login_path, class:"nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Sign up", signup_path, class:"nav-link" %>
+              </li>
+            <% end %>
           </ul>
           <form class="d-flex">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

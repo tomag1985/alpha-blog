@@ -8,9 +8,11 @@
 					<%= link_to gravatar_for(@article.user), user_path(@article.user) %>
 				</div>
 				<div class="card-body">
-					<div class="card-text"><%= simple_format(@article.description) %></div>						
-					<%= link_to "Edit", edit_article_path(@article), class:"btn btn-outline-info"  %>
-					<%= link_to "Delete", article_path(@article), class:"btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"}  %>
+					<div class="card-text"><%= simple_format(@article.description) %></div>
+					<% if logged_in? && current_user == @article.user %>
+						<%= link_to "Edit", edit_article_path(@article), class:"btn btn-outline-info"  %>
+						<%= link_to "Delete", article_path(@article), class:"btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"}  %>
+					<% end %>
 				</div>
 				<div class="card-footer text-muted">
 					<small> Created <%= time_ago_in_words(@article.created_at) %> ago,
