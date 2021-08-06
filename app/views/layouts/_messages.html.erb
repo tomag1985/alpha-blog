@@ -1,6 +1,6 @@
 <div class="container">
 	<% flash.each do |key, msg| %>
-		<div class="alert alert-success" role="alert">
+		<div class="alert alert-<%= key == "notice" ? "success" : "danger" %>" role="alert">
 			<%= msg %>
 		</div>
 	<% end %>
