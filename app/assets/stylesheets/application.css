@@ -41,3 +41,17 @@
     color: black; }
     .apple_pagination a:hover, .apple_pagination a:focus {
       text-decoration: underline; }
+
+
+.badge {
+  background-color: #007BFF !important;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  font-weight: bold !important;
+  display: inline-block !important;
+  }
+
+  .badge a {
+    color: white;
+    text-decoration: none;
+  }

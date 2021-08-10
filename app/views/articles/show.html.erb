@@ -6,6 +6,11 @@
 				<div class="card-header">
 					By <%= @article.user.username %>
 					<%= link_to gravatar_for(@article.user), user_path(@article.user) %>
+					<% if @article.categories.any? %>
+						<% @article.categories.each do |category| %>
+							<div class="badge"><%= link_to category.name, category_path(category) %></div>
+						<% end %>
+					<% end %>
 				</div>
 				<div class="card-body">
 					<div class="card-text"><%= simple_format(@article.description) %></div>

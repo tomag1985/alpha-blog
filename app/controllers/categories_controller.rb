@@ -7,6 +7,7 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
+    @articles = @category.articles.paginate(page: params[:page], per_page: 4)
   end
 
   def new
@@ -21,6 +22,20 @@ class CategoriesController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def edit
+    @category = Category.find(params[:id])
+  end
+
+  def update
+    @category = Category.find(params[:id])
+    if @category.update(category_params)
+			flash[:notice] = "User info updated!"
+			redirect_to user_path(@category)
+		else
+			render 'edit'
+		end
   end
 
   private
