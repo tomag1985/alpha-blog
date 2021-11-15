@@ -15,11 +15,10 @@
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><%= link_to "Index", articles_path, class:"dropdown-item" %></li>               
-                <% if logged_in? %>
-                  <li><%= link_to "Create new", new_article_path, class:"dropdown-item" %></li>
-                <% end %>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  <% if logged_in? %>
+                    <li><%= link_to "Create new", new_article_path, class:"dropdown-item" %></li>
+                  <% end %>
               </ul>
             </li>
 
