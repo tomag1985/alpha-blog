@@ -15,8 +15,8 @@
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><%= link_to "Index", articles_path, class:"dropdown-item" %></li>               
-                <li><hr class="dropdown-divider"></li>
                   <% if logged_in? %>
+                    <li><hr class="dropdown-divider"></li>
                     <li><%= link_to "Create new", new_article_path, class:"dropdown-item" %></li>
                   <% end %>
               </ul>
